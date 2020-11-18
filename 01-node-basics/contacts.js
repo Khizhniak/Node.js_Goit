@@ -2,28 +2,66 @@ const fs = require('fs');
 const path = require('path');
 
 
-const contactsPath = 'C:\\Users\\Dusya\\Desktop\\Node.js_Goit\\01-node-basics\\db\\contacts.json';
+const contactsPath = path.join(__dirname, "db\\contacts.json");
 
-fs.readFile(contactsPath, "utf8", (err, data) => {
-    if(err){
-        console.error(err.message);
-        return
-    }
-    const textFromJson = JSON.parse(data)
-     console.table(textFromJson);
-})
+function listContacts() {
+    fs.readFile(contactsPath, "utf8", (err, data) => {
+        if (err) {
+            console.error(err.message);
+            return
+        }
+        const textFromJson = JSON.parse(data)
+        console.table(textFromJson);
+    })
+}
 
+function getContactById(contactId) {
+    fs.readFile(contactsPath, "utf8", (err, data) => {
+        if (err) {
+            console.error(err.message);
+            return
+        }
+        const textFromJson = JSON.parse(data)
+        const idContactFromJSON = textFromJson.find(item => item.id = contactId)
+        console.table(idContactFromJSON);
 
-  function listContacts() {
-  }
-  
-  function getContactById(contactId) {
+    })
+}
 
-  }
-  
-  function removeContact(contactId) {
+function removeContact(contactId) {
+    fs.readFile(contactsPath, "utf8", (err, data) => {
+        if (err) {
+            console.error(err.message);
+            return
+        }
+        const textFromJson = JSON.parse(data);
+        const filterContacts = textFromJson.filter(item => item.id !== contactId);
+        console.table(filterContacts);
+    });
+}
 
-  }
+function addContact(name, email, phone) {
+    fs.readFile(contactsPath, "utf8", (err, data) => {
+        if (err) {
+            console.error(err.message);
+            return
+        }
+        const textFromJson = JSON.parse(data);
 
-  function addContact(name, email, phone) {
-  }
+        const user = {
+            id: 11,
+            name,
+            email,
+            phone
+        }
+        textFromJson.push(user)
+        console.table(textFromJson);
+    });
+}
+
+module.exports = {
+    listContacts,
+    getContactById,
+    removeContact,
+    addContact,
+  };
