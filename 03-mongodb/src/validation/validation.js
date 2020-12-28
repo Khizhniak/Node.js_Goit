@@ -16,8 +16,7 @@ const schemaUpdateContact = Joi.object({
   phone: Joi.number().min(6).optional(),
   subscription: Joi.string(),
   password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")),
-  token: Joi.any(),
-});
+}).min(1);
 
 const validate = (schema, body, next) => {
   const { error } = schema.validate(body);

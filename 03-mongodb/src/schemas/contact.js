@@ -13,9 +13,9 @@ const contactSchema = new Schema({
     minlength: 10,
   },
   phone: { type: String, required: [true, "Contact phone number is required"] },
-  subscription: Schema.Types.Mixed,
-  password: Schema.Types.Mixed,
-  token: Schema.Types.Mixed,
+  subscription: Schema.Types.String,
+  password: Schema.Types.String,
+  token: Schema.Types.String,
 });
 const Contact = mongoose.model("contact", contactSchema);
 
