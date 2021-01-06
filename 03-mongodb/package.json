@@ -1,5 +1,5 @@
 {
-  "name": "wh-01",
+  "name": "hw-01",
   "version": "1.0.0",
   "scripts": {
     "start": "node index.js",
