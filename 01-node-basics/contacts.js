@@ -15,7 +15,7 @@ async function getContactById(contactId) {
     fs.readFile(contactsPath, "utf8", (err, data) => {
         if (err) throw err;
         const textFromJson = JSON.parse(data)
-        const idContactFromJSON = textFromJson.find(item => item.id = contactId)
+        const idContactFromJSON = textFromJson.find(item => item.id == contactId)
         console.table(idContactFromJSON);
     })}
 
